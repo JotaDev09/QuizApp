@@ -1,0 +1,38 @@
+body {
+    background-color: #F5F5F5 !important;
+}
+
+.container {
+    min-height: 100vh;
+    background-color: #F5F5F5 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quiz-card {
+    width: 30rem;
+}
+
+.question-footer {
+    border-top: 1px solid rgb(0,0,0,0.4);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 12px;
+}
+
+.card_answer:hover {
+    cursor: pointer;
+    background-color: aliceblue;
+}
+
+.bg-success, .bg-danger {
+    color: white;
+}
+
+.button-row {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+}
