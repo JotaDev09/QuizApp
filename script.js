@@ -94,6 +94,13 @@ function init() {
 }
 
 
+function initGame() {
+    document.getElementById('titleQuizz').style = 'display: none';
+    document.getElementById('firstQuestion').style = '';
+
+}
+
+
 function showQuestion() {
 
     if(currentQuestion >= questions.length) {
@@ -102,7 +109,7 @@ function showQuestion() {
 
         document.getElementById('totalQuestions').innerHTML = questions.length;
         document.getElementById('rightAnswers').innerHTML = rightQuestions;
-        //document.getElementById('').src = 'direcc img'; cambiar imagen final
+        document.getElementById('fotoQuizz').src = 'fotos/mjollnir.jpg'; //cambiar imagen final
     } else { //Show question
 
     let percent = (currentQuestion + 1) / questions.length;
@@ -128,15 +135,22 @@ function answer(selection) {
     let selectedQuestion = selection.slice(-1);
     let idRightAnswer = `answer_${question['right_answer']}`;
 
-    if(selectedQuestion == question['right_answer']) {
-        //console.log('Yeah');
-        document.getElementById(selection).parentNode.classList.add('bg-success');
+    if(selectedQuestion == question['right_answer']) { 
+        //document.getElementById(selection).parentNode.classList.add('bg-success');
+        document.getElementById(selection).innerHTML += `
+            <img class="icon" src="icons/avengers.png">
+        `
         audio_success.play();
         rightQuestions++;
     } else {
-        //console.log('tonto')
-        document.getElementById(selection).parentNode.classList.add('bg-danger');
-        document.getElementById(idRightAnswer).parentNode.classList.add('bg-success');
+        //document.getElementById(selection).parentNode.classList.add('bg-danger');
+        //document.getElementById(idRightAnswer).parentNode.classList.add('bg-success');
+        document.getElementById(selection).innerHTML += `    
+        <img class="icon" src="icons/joker.png">
+        `
+        document.getElementById(idRightAnswer).innerHTML += `     
+        <img class="icon" src="icons/avengers.png">
+        `
         audio_fail.play();
     }
     document.getElementById('next_button').disabled = false
@@ -148,7 +162,7 @@ function nextQuestion() {
     resetColors();
 }
 
-function resetColors() {
+/*function resetColors() {
     document.getElementById('next_button').disabled = true;
 
     document.getElementById('answer_1').parentNode.classList.remove('bg-danger');
@@ -159,15 +173,14 @@ function resetColors() {
     document.getElementById('answer_3').parentNode.classList.remove('bg-success');
     document.getElementById('answer_4').parentNode.classList.remove('bg-danger');
     document.getElementById('answer_4').parentNode.classList.remove('bg-success');
-}
+}*/
 
 
 function restartGame() {
-    //document.getElementById('').src = 'direcc img'; cambiar imagen inicial
+    document.getElementById('fotoQuizz').src = 'fotos/ironman.jpg'; //cambiar imagen inicial
     rightQuestions = 0;
     currentQuestion = 0;
     init();
     document.getElementById('questionsBody').style = '';
     document.getElementById('endScreen').style = 'display: none';
-    
 }
